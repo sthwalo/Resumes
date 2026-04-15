@@ -1,0 +1,130 @@
+{
+  "format": "pdf",
+  "data": {
+    "personalInfo": {
+      "fullName": "Promenet Mabuza",
+      "email": "promenet.mabuza@email.com",
+      "phone": "+27 82 345 6789",
+      "location": "Johannesburg, Gauteng",
+      "linkedIn": "promenet-mabuza"
+    },
+    "summary": "Dedicated and safety-conscious professional driver with over 10 years of experience operating heavy and light motor vehicles under a valid Code C1 licence. Proven track record of on-time deliveries, zero at-fault accidents, and strict adherence to road safety regulations. Experienced in long-distance and local route driving, vehicle pre-inspection, and basic mechanical fault reporting. Committed to delivering excellent service, maintaining cargo integrity, and upholding all traffic and occupational health and safety legislation.",
+    "experience": [
+      {
+        "jobTitle": "Professional Driver (Code C1)",
+        "company": "Rapid Freight Solutions",
+        "location": "Johannesburg, Gauteng",
+        "startDate": "03/2019",
+        "current": true,
+        "bullets": [
+          "Completed 500+ long-distance delivery runs across Gauteng, Limpopo, and Mpumalanga with a 99% on-time delivery rate",
+          "Reduced fuel consumption by 12% by adopting eco-driving techniques and optimised route planning",
+          "Maintained a zero at-fault accident record over 5 years, earning the company's Annual Safety Driver Award in 2022 and 2023",
+          "Conducted daily pre-trip vehicle inspections, identifying and reporting 30+ mechanical faults before they caused operational delays",
+          "Transported over 10 000 tonnes of cargo annually while complying with road-weight limits and load-securing regulations"
+        ]
+      },
+      {
+        "jobTitle": "Driver / Logistics Assistant",
+        "company": "Mabuza Transport Services",
+        "location": "Pretoria, Gauteng",
+        "startDate": "06/2015",
+        "endDate": "02/2019",
+        "current": false,
+        "bullets": [
+          "Operated a 5-tonne C1 truck on scheduled municipal and retail supply routes, servicing 20+ clients per week",
+          "Decreased route turnaround time by 18% by identifying and proposing 3 alternative delivery corridors",
+          "Mentored 2 junior drivers on vehicle handling, defensive driving techniques, and health and safety compliance",
+          "Managed warehouse loading, cargo strapping, and delivery documentation for 100+ consignments per month"
+        ]
+      },
+      {
+        "jobTitle": "Light Motor Vehicle Driver",
+        "company": "City Link Couriers",
+        "location": "Pretoria, Gauteng",
+        "startDate": "01/2013",
+        "endDate": "05/2015",
+        "current": false,
+        "bullets": [
+          "Delivered parcels and documents across Tshwane metropolitan area, handling 40-60 stops per day",
+          "Achieved a 98% customer satisfaction rating based on delivery confirmation feedback forms",
+          "Maintained vehicle logbooks and trip sheets in compliance with Road Traffic Act requirements"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "National Senior Certificate (Grade 12)",
+        "institution": "Nkosi Albert Luthuli Secondary School",
+        "location": "Bushbuckridge, Mpumalanga",
+        "graduationDate": "11/2011"
+      }
+    ],
+    "skills": {
+      "technical": [
+        "Code C1 Licence (Valid)",
+        "Long-distance and Local Route Driving",
+        "Pre-trip and Post-trip Vehicle Inspections",
+        "Defensive Driving",
+        "Load Securing and Cargo Handling",
+        "Fleet Management Systems",
+        "GPS Navigation and Route Planning",
+        "Vehicle Logbook and Trip Sheet Maintenance",
+        "Road Traffic Act Compliance"
+      ],
+      "tools": [
+        "Garmin GPS",
+        "Fleet Management Software",
+        "Electronic Delivery Management Systems"
+      ],
+      "soft": [
+        "Punctuality and Time Management",
+        "Safety Consciousness",
+        "Communication",
+        "Problem Solving",
+        "Reliability"
+      ],
+      "languages": [
+        "Zulu (Native)",
+        "Siswati (Native)",
+        "English (Fluent)",
+        "Afrikaans (Basic)"
+      ]
+    },
+    "certifications": [
+      {
+        "name": "Professional Driving Permit (PDP)",
+        "issuer": "Department of Transport — South Africa",
+        "date": "02/2024",
+        "expiryDate": "02/2027"
+      },
+      {
+        "name": "Defensive Driving Certificate",
+        "issuer": "MasterDrive South Africa",
+        "date": "08/2021"
+      },
+      {
+        "name": "Occupational Health and Safety (OHS) Awareness",
+        "issuer": "NOSA",
+        "date": "05/2020"
+      },
+      {
+        "name": "First Aid Level 1",
+        "issuer": "St John Ambulance South Africa",
+        "date": "03/2019"
+      }
+    ],
+    "projects": [
+      {
+        "name": "Route Optimisation Initiative — Rapid Freight Solutions",
+        "description": "Led an internal project to remap 15 recurring delivery routes using GPS data analysis, cutting average daily mileage by 8% and saving the company approximately R45 000 in fuel costs annually.",
+        "technologies": ["GPS Fleet Tracking", "Google Maps API", "Excel Reporting"],
+        "bullets": [
+          "Analysed 6 months of trip data to identify inefficient routes and peak congestion windows",
+          "Proposed 3 alternative corridors adopted company-wide, reducing average trip duration by 22 minutes",
+          "Presented findings to operations manager, resulting in formal policy update for route planning"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<!-- ── Navigation ──────────────────────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="nav-brand">&#128196; Resume Builder</div>
+  <div class="nav-actions">
+    <button class="btn-outline-white" onclick="openDraftsPanel()">&#128193; My Drafts</button>
+    <button class="btn-white" onclick="newResume()">+ New Resume</button>
+  </div>
+</nav>
+
+<!-- ── Toast notifications ─────────────────────────────────────────────── -->
+<div id="toast-container"></div>
+
+<!-- ── Drafts overlay panel ───────────────────────────────────────────── -->
+<div id="drafts-overlay" class="overlay" style="display:none">
+  <div class="overlay-panel">
+    <div class="overlay-header">
+      <h2>My Saved Drafts</h2>
+      <button class="btn-icon-lg" onclick="document.getElementById('drafts-overlay').style.display='none'">&#215;</button>
+    </div>
+    <div id="drafts-list" class="drafts-list"></div>
+  </div>
+</div>
+
+<!-- ── Main ────────────────────────────────────────────────────────────── -->
+<div class="page-container">
+  <form id="main-form" onsubmit="return false">
+
+    <!-- Sticky action bar -->
+    <div class="action-bar">
+      <div class="draft-meta">
+        <input id="owner-name"   type="text" placeholder="Your name"     class="input-inline" autocomplete="off"/>
+        <input id="draft-title"  type="text" placeholder="Resume title"  class="input-inline" autocomplete="off"/>
+        <span  id="draft-badge"  class="draft-badge"></span>
+      </div>
+      <div class="ats-block">
+        <span class="ats-label">ATS</span>
+        <span id="ats-score" class="ats-value neutral">&#8212;</span>
+      </div>
+      <div class="action-btns">
+        <button type="button" class="btn-save"  onclick="handleSave()">&#128190; Save</button>
+        <button type="button" class="btn-gen"         data-fmt="pdf"  onclick="handleGenerate('pdf')">&#8595; PDF</button>
+        <button type="button" class="btn-gen"         data-fmt="docx" onclick="handleGenerate('docx')">&#8595; DOCX</button>
+        <button type="button" class="btn-gen-outline" data-fmt="html" onclick="handleGenerate('html')">&#8595; HTML</button>
+      </div>
+    </div>
+
+    <!-- Validation panel -->
+    <div id="validation-panel" class="validation-panel" style="display:none"></div>
+
+    <!-- ── 1. Personal Information ──────────────────────────────────────── -->
+    <section class="card" id="section-personal">
+      <div class="section-hd">
+        <h2>Personal Information</h2>
+        <span class="section-hint">Fields marked * are required by all ATS systems</span>
+      </div>
+      <div class="grid-3">
+        <div class="fg">
+          <label>Full Name *</label>
+          <input type="text"  id="pi-fullName" name="fullName"   placeholder="Jane Doe"/>
+        </div>
+        <div class="fg">
+          <label>Email Address *</label>
+          <input type="email" id="pi-email"    name="email"      placeholder="jane@example.com"/>
+        </div>
+        <div class="fg">
+          <label>Phone Number *</label>
+          <input type="tel"   id="pi-phone"    name="phone"      placeholder="+27 82 123 4567"/>
+        </div>
+        <div class="fg">
+          <label>Location <small>(City, Province)</small></label>
+          <input type="text"  id="pi-location" name="piLocation" placeholder="Johannesburg, Gauteng"/>
+        </div>
+        <div class="fg">
+          <label>LinkedIn <small>(username only)</small></label>
+          <input type="text"  id="pi-linkedIn" name="linkedIn"   placeholder="jane-doe"/>
+        </div>
+        <div class="fg">
+          <label>GitHub <small>(username only)</small></label>
+          <input type="text"  id="pi-github"   name="github"     placeholder="janedoe"/>
+        </div>
+        <div class="fg">
+          <label>Personal Website <small>(optional)</small></label>
+          <input type="text"  id="pi-website"  name="website"    placeholder="janedoe.dev"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2. Professional Summary ─────────────────────────────────────── -->
+    <section class="card">
+      <div class="section-hd">
+        <h2>Professional Summary</h2>
+        <span class="section-hint">30&#8211;100 words packed with job-relevant keywords</span>
+      </div>
+      <div class="fg">
+        <textarea id="pi-summary" name="summary" rows="4"
+          placeholder="Results-driven professional with X years of experience in [field]…"></textarea>
+        <div id="word-count" class="word-count"></div>
+      </div>
+    </section>
+
+    <!-- ── 3. Work Experience ──────────────────────────────────────────── -->
+    <section class="card">
+      <div class="section-hd">
+        <h2>Work Experience</h2>
+        <button type="button" class="btn-add-section" onclick="addExperience()">+ Add Experience</button>
+      </div>
+      <div id="exp-list"></div>
+    </section>
+
+    <!-- ── 4. Education ────────────────────────────────────────────────── -->
+    <section class="card">
+      <div class="section-hd">
+        <h2>Education</h2>
+        <button type="button" class="btn-add-section" onclick="addEducation()">+ Add Education</button>
+      </div>
+      <div id="edu-list"></div>
+    </section>
+
+    <!-- ── 5. Skills ──────────────────────────────────────────────────── -->
+    <section class="card">
+      <div class="section-hd">
+        <h2>Skills</h2>
+        <span class="section-hint">Type a skill and press Enter or comma to add it as a tag</span>
+      </div>
+      <div class="skills-grid">
+        <div class="fg">
+          <label>Technical Skills * <small>(min 5)</small></label>
+          <div class="tag-wrapper" id="tag-technical">
+            <input type="text" class="tag-input" placeholder="Java, Python, SQL&#8230;"/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Tools &amp; Platforms</label>
+          <div class="tag-wrapper" id="tag-tools">
+            <input type="text" class="tag-input" placeholder="Git, Docker, AWS&#8230;"/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Soft Skills</label>
+          <div class="tag-wrapper" id="tag-soft">
+            <input type="text" class="tag-input" placeholder="Leadership, Communication&#8230;"/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Languages</label>
+          <div class="tag-wrapper" id="tag-languages">
+            <input type="text" class="tag-input" placeholder="English (Native)&#8230;"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 6. Certifications ──────────────────────────────────────────── -->
+    <section class="card">
+      <div class="section-hd">
+        <h2>Certifications</h2>
+        <button type="button" class="btn-add-section" onclick="addCertification()">+ Add Certification</button>
+      </div>
+      <div id="cert-list"></div>
+    </section>
+
+    <!-- ── 7. Projects ────────────────────────────────────────────────── -->
+    <section class="card">
+      <div class="section-hd">
+        <h2>Projects</h2>
+        <button type="button" class="btn-add-section" onclick="addProject()">+ Add Project</button>
+      </div>
+      <div id="proj-list"></div>
+    </section>
+
+  </form>
+</div><!-- /page-container -->
+
+<script src="/js/app.js"></script>
+</body>
+</html>

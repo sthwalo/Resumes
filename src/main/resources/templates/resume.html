@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title th:text="${resume.personalInfo.fullName} + ' — Resume'">Resume</title>
+    <style>
+        /*
+         * ATS-SAFE CSS RULES:
+         * - Single column, no floats, no flexbox columns (ATS parsers read top-to-bottom)
+         * - No background images or decorative graphics
+         * - Standard fonts only (Calibri falls back to Arial/sans-serif)
+         * - Contact info is in the document body, NOT in a header/footer element
+         * - No tables used for layout
+         * - Font size >= 10pt throughout (smaller text is often skipped by parsers)
+         */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Calibri', Arial, sans-serif;
+            font-size: 11pt;
+            color: #1a1a1a;
+            background: #ffffff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 36px 48px;
+            line-height: 1.45;
+        }
+
+        /* ── Name ────────────────────────────────────── */
+        h1.name {
+            font-size: 22pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        /* ── Contact bar ──────────────────────────────── */
+        p.contact {
+            font-size: 10pt;
+            color: #333;
+            margin-bottom: 14px;
+            border-bottom: 1.5px solid #1a1a1a;
+            padding-bottom: 8px;
+        }
+        p.contact a { color: #1a1a1a; text-decoration: none; }
+
+        /* ── Section headings ─────────────────────────── */
+        h2.section-title {
+            font-size: 12pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #999;
+            margin: 18px 0 6px 0;
+            padding-bottom: 2px;
+            color: #1a1a1a;
+        }
+
+        /* ── Summary ─────────────────────────────────── */
+        p.summary { margin-bottom: 4px; }
+
+        /* ── Job entry ────────────────────────────────── */
+        div.job { margin-bottom: 12px; }
+
+        p.job-header {
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+        p.job-meta {
+            font-size: 10pt;
+            color: #444;
+            margin-bottom: 4px;
+        }
+
+        /* ── Bullets (plain list — no special characters that confuse ATS) */
+        ul.bullets {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+        ul.bullets li {
+            margin-bottom: 2px;
+            font-size: 11pt;
+        }
+
+        /* ── Education ────────────────────────────────── */
+        div.edu { margin-bottom: 10px; }
+        p.edu-degree { font-weight: 700; }
+        p.edu-meta { font-size: 10pt; color: #444; }
+
+        /* ── Skills ───────────────────────────────────── */
+        div.skill-row { margin-bottom: 3px; }
+        span.skill-label { font-weight: 700; }
+
+        /* ── Certifications ───────────────────────────── */
+        div.cert { margin-bottom: 4px; }
+
+        /* ── Projects ─────────────────────────────────── */
+        div.project { margin-bottom: 10px; }
+        p.project-name { font-weight: 700; }
+        p.project-stack { font-size: 10pt; color: #444; }
+    </style>
+</head>
+<body>
+
+<!-- ── Name ──────────────────────────────────────────────────────────── -->
+<h1 class="name" th:text="${resume.personalInfo.fullName}">Full Name</h1>
+
+<!-- ── Contact (body element — NOT header/footer tag) ────────────────── -->
+<p class="contact">
+    <span th:text="${resume.personalInfo.email}">email@example.com</span>
+    <span th:if="${resume.personalInfo.phone}"> &#160;|&#160; <span th:text="${resume.personalInfo.phone}"></span></span>
+    <span th:if="${resume.personalInfo.location}"> &#160;|&#160; <span th:text="${resume.personalInfo.location}"></span></span>
+    <span th:if="${resume.personalInfo.linkedIn}"> &#160;|&#160; linkedin.com/in/<span th:text="${resume.personalInfo.linkedIn}"></span></span>
+    <span th:if="${resume.personalInfo.github}"> &#160;|&#160; github.com/<span th:text="${resume.personalInfo.github}"></span></span>
+    <span th:if="${resume.personalInfo.website}"> &#160;|&#160; <span th:text="${resume.personalInfo.website}"></span></span>
+</p>
+
+<!-- ── Professional Summary ──────────────────────────────────────────── -->
+<div th:if="${resume.summary != null and !#strings.isEmpty(resume.summary)}">
+    <h2 class="section-title">Professional Summary</h2>
+    <p class="summary" th:text="${resume.summary}"></p>
+</div>
+
+<!-- ── Work Experience ────────────────────────────────────────────────── -->
+<div th:if="${resume.experience != null and !resume.experience.empty}">
+    <h2 class="section-title">Work Experience</h2>
+    <div class="job" th:each="exp : ${resume.experience}">
+        <p class="job-header">
+            <span th:text="${exp.jobTitle}"></span>
+            &#160;&#8212;&#160;
+            <span th:text="${exp.company}"></span>
+            <span th:if="${exp.location}">, <span th:text="${exp.location}"></span></span>
+        </p>
+        <p class="job-meta">
+            <span th:text="${exp.startDate}"></span> &#8211;
+            <span th:if="${exp.current}">Present</span>
+            <span th:unless="${exp.current}" th:text="${exp.endDate}"></span>
+        </p>
+        <ul class="bullets" th:if="${exp.bullets != null and !exp.bullets.empty}">
+            <li th:each="bullet : ${exp.bullets}" th:text="${bullet}"></li>
+        </ul>
+    </div>
+</div>
+
+<!-- ── Education ──────────────────────────────────────────────────────── -->
+<div th:if="${resume.education != null and !resume.education.empty}">
+    <h2 class="section-title">Education</h2>
+    <div class="edu" th:each="edu : ${resume.education}">
+        <p class="edu-degree" th:text="${edu.degree}"></p>
+        <p class="edu-meta">
+            <span th:text="${edu.institution}"></span>
+            <span th:if="${edu.location}">, <span th:text="${edu.location}"></span></span>
+            <span th:if="${edu.graduationDate}"> &#160;|&#160; Graduated: <span th:text="${edu.graduationDate}"></span></span>
+            <span th:if="${edu.gpa}"> &#160;|&#160; GPA: <span th:text="${edu.gpa}"></span></span>
+            <span th:if="${edu.honors}"> &#160;|&#160; <span th:text="${edu.honors}"></span></span>
+        </p>
+    </div>
+</div>
+
+<!-- ── Skills ─────────────────────────────────────────────────────────── -->
+<div th:if="${resume.skills != null}">
+    <h2 class="section-title">Skills</h2>
+    <div class="skill-row" th:if="${resume.skills.technical != null and !resume.skills.technical.empty}">
+        <span class="skill-label">Technical: </span>
+        <span th:text="${#strings.listJoin(resume.skills.technical, ', ')}"></span>
+    </div>
+    <div class="skill-row" th:if="${resume.skills.tools != null and !resume.skills.tools.empty}">
+        <span class="skill-label">Tools: </span>
+        <span th:text="${#strings.listJoin(resume.skills.tools, ', ')}"></span>
+    </div>
+    <div class="skill-row" th:if="${resume.skills.soft != null and !resume.skills.soft.empty}">
+        <span class="skill-label">Soft Skills: </span>
+        <span th:text="${#strings.listJoin(resume.skills.soft, ', ')}"></span>
+    </div>
+    <div class="skill-row" th:if="${resume.skills.languages != null and !resume.skills.languages.empty}">
+        <span class="skill-label">Languages: </span>
+        <span th:text="${#strings.listJoin(resume.skills.languages, ', ')}"></span>
+    </div>
+</div>
+
+<!-- ── Certifications ─────────────────────────────────────────────────── -->
+<div th:if="${resume.certifications != null and !resume.certifications.empty}">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert" th:each="cert : ${resume.certifications}">
+        <strong th:text="${cert.name}"></strong>
+        &#160;&#8212;&#160; <span th:text="${cert.issuer}"></span>
+        <span th:if="${cert.date}"> (<span th:text="${cert.date}"></span>)</span>
+        <span th:if="${cert.expiryDate}"> &#8211; Expires: <span th:text="${cert.expiryDate}"></span></span>
+    </div>
+</div>
+
+<!-- ── Projects ───────────────────────────────────────────────────────── -->
+<div th:if="${resume.projects != null and !resume.projects.empty}">
+    <h2 class="section-title">Projects</h2>
+    <div class="project" th:each="proj : ${resume.projects}">
+        <p class="project-name" th:text="${proj.name}"></p>
+        <p th:if="${proj.description}" th:text="${proj.description}"></p>
+        <p class="project-stack"
+           th:if="${proj.technologies != null and !proj.technologies.empty}">
+            Stack: <span th:text="${#strings.listJoin(proj.technologies, ', ')}"></span>
+        </p>
+        <p th:if="${proj.url}">
+            URL: <span th:text="${proj.url}"></span>
+        </p>
+        <ul class="bullets" th:if="${proj.bullets != null and !proj.bullets.empty}">
+            <li th:each="bullet : ${proj.bullets}" th:text="${bullet}"></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
