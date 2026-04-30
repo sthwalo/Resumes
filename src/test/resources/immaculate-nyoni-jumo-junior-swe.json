@@ -1,0 +1,278 @@
+{
+  "format": "pdf",
+  "data": {
+    "personalInfo": {
+      "fullName": "Immaculate Nyoni",
+      "email": "immaculate@sthwalo.com",
+      "phone": "+27 061 514 6185",
+      "location": "Johannesburg, South Africa (Remote-Ready, UTC+2)",
+      "linkedIn": "inyoni",
+      "github": "sthwalo",
+      "website": "sthwalo.com"
+    },
+    "summary": "Self-taught full-stack engineer who left a formal CS programme due to financial constraints and spent the next two years building a production multi-tenant SaaS platform (620 000+ lines of code, 331 REST endpoints) using Java 17, Spring Boot 3.5, React 19, TypeScript, and AWS — while formalising knowledge in security, networking, and Java through Google and LinkedIn certifications in parallel. Comfortable across the full SDLC: schema design, distributed service architecture, CI/CD, and live AWS operations. Ready to bring that end-to-end delivery depth to JUMO's banking-as-a-service platform.",
+    "experience": [
+      {
+        "jobTitle": "Owner, Architect & Lead Engineer",
+        "company": "FIN Financial Management System — Sthwalo Holdings (Pty) Ltd",
+        "location": "South Africa (Remote)",
+        "startDate": "04/2024",
+        "current": true,
+        "note": "Development began April 2024 following a structured self-study period (May 2023 – March 2024) covering Java, Spring Boot, JavaScript, SQL, and cybersecurity through LinkedIn Learning and Google Coursera certifications. FIN went live in production within the same development period.",
+        "bullets": [
+          "Designed, built, and shipped a production multi-tenant SaaS platform with 620 000+ lines of code, 331 REST API endpoints across 30 Spring Boot controllers, 90 service classes, and 54 JPA repositories — delivered solo in approximately 2 years",
+          "Architected a clean layered system (Controller → Service → Repository → Entity) applying Repository, DTO, Service Layer, and AOP design patterns — including a PlanEnforcementAspect that gates subscription features without coupling to business logic",
+          "Built a SARS-compliant double-entry accounting engine (Java 17 / Spring Boot 3.5 / PostgreSQL) that generates balanced GL journal entries automatically from every financial event — zero manual debit/credit decisions for the end user",
+          "Implemented a 39-endpoint payroll module covering SARS tax bracket calculations, UIF and SDL contributions, IRP5-aligned payslip PDF generation via Apache PdfBox, and automatic GL posting — no manual journal entry required post-payroll",
+          "Designed a 62-table multi-tenant PostgreSQL schema with full tenant isolation via company_id, evolved safely across a live RDS instance using 18 versioned Flyway migrations including PostgreSQL functions, triggers, and index strategies",
+          "Developed a bank statement processing pipeline with spatial coordinate extraction (SpatialDocumentTextExtractor) to parse PDFs from 4 South African banks regardless of column layout, feeding a rules-based TransactionClassificationEngine for automatic GL account posting",
+          "Delivered a React 19 / TypeScript 5 / Vite frontend with 52 fully typed components covering Balance Sheet, Income Statement, Cash Flow, Trial Balance, Payroll, Budgeting, Asset Register, VAT, and Audit Trail — mobile-responsive at 5 breakpoints (600px–900px)",
+          "Integrated live PayFast recurring subscription billing: registration via form POST, IPN webhook confirmation, plan upgrade pro-rata charging — operating in live mode with real transactions",
+          "Operated full AWS infrastructure in af-south-1: EC2 (systemd-managed JAR), RDS PostgreSQL (encrypted, managed), S3 (artifact storage and daily pg_dump backups with 30-day retention), Secrets Manager (runtime credential injection), SSM Session Manager (no SSH key exposure)",
+          "Designed and maintained 11 GitHub Actions CI/CD workflows covering build/test/deploy, parallel lint and compile, Docker image build and push to GHCR, CodeQL SAST, GitGuardian secret scanning, Gradle lock file integrity validation, and PR gate checks",
+          "Engineered security controls aligned with production standards: JWT via HttpOnly cookies with refresh token rotation, BCrypt password hashing, HSTS + TLS via Nginx + Certbot, strict CSP with violation reporting, request-level rate limiting, CORS restricted to declared origins, and zero credentials in codebase via AWS Secrets Manager",
+          "Generated a 20-service financial reporting suite producing Balance Sheet, Income Statement, Cash Flow (direct and indirect), Trial Balance, Aged Receivables/Payables, Management Accounts, and Payroll Analysis — all exportable as PDF",
+          "Remediated a git history credential exposure across 496 commits using git filter-repo, force-pushed a clean history with zero code loss and zero production downtime",
+          "Implemented an OCR document processing pipeline (ImageDocumentTextExtractor, OcrSpatialExtractor) enabling mobile-captured supplier invoices and PDF uploads to be parsed and auto-populated into document records without manual re-entry",
+          "Applied security knowledge formalised through the Google Cybersecurity Specialization directly to production: threat modelling informed the JWT + HttpOnly cookie auth design, network security fundamentals shaped CORS and CSP configuration, and asset/vulnerability awareness drove the decision to use AWS Secrets Manager over environment variables for all credentials"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "BSc Computer Science (Year 1 — incomplete)",
+        "institution": "IU International University of Applied Sciences",
+        "location": "Remote / Germany",
+        "startDate": "06/2022",
+        "graduationDate": "05/2023",
+        "honors": "Completed first-semester coursework. Left formal programme due to financial constraints and immediately resumed learning through hands-on project delivery and self-directed study in Java, Spring Boot, data structures, and software architecture. Full production system (FIN) built independently in the two years following."
+      }
+    ],
+    "skills": {
+      "technical": [
+        "Java 17 (collections, exception handling, JDBC, OOP — formally certified)",
+        "Spring Boot 3.5 and Spring 6 (formally certified)",
+        "Spring Security 6.5",
+        "Hibernate and JPA",
+        "PostgreSQL",
+        "SQL (production use + Google Cybersecurity cert: Linux and SQL module)",
+        "JDBC (formally certified)",
+        "Flyway (schema migrations)",
+        "REST API design (331 endpoints in production)",
+        "Multi-tenant SaaS architecture",
+        "Aspect-Oriented Programming (AOP)",
+        "React 19",
+        "TypeScript 5",
+        "JavaScript (certified, production use in TypeScript and React)",
+        "Vite",
+        "Vitest",
+        "React Router",
+        "Axios",
+        "Docker",
+        "GitHub Actions (CI and CD)",
+        "Linux CLI (Google Cybersecurity cert: Tools of the Trade)",
+        "Network security fundamentals (Google Cybersecurity cert: Connect and Protect)",
+        "Threat and vulnerability analysis (Google Cybersecurity cert: Assets, Threats, and Vulnerabilities)",
+        "Security incident detection and response (Google Cybersecurity cert: Sound the Alarm)",
+        "Security risk management frameworks (Google Cybersecurity cert: Play It Safe)",
+        "AWS EC2",
+        "AWS RDS",
+        "AWS S3",
+        "AWS Secrets Manager",
+        "AWS SSM Session Manager",
+        "Nginx",
+        "Gradle (Kotlin DSL)",
+        "Maven",
+        "Apache PdfBox",
+        "PDF spatial text extraction",
+        "OCR document pipelines",
+        "JWT authentication",
+        "Git, git filter-repo"
+      ],
+      "tools": [
+        "GitHub Actions (11 production workflows)",
+        "GitHub Container Registry (GHCR)",
+        "Docker",
+        "AWS Console / CLI",
+        "CodeQL (SAST)",
+        "GitGuardian (secret scanning)",
+        "Certbot / Let's Encrypt",
+        "Postman / REST API testing",
+        "IntelliJ IDEA",
+        "VS Code"
+      ],
+      "soft": [
+        "End-to-end ownership across the full SDLC",
+        "Autonomous problem-solving under real production constraints",
+        "Systems thinking — design decisions traced through to operational impact",
+        "Technical documentation and architecture decision-making",
+        "Stakeholder communication (translating accounting complexity into engineering requirements and vice versa)",
+        "Risk anticipation and proactive escalation before cost or timeline ballooning",
+        "Continuous formal learning alongside active delivery (17 certifications completed while building FIN)",
+        "Attention to detail — financial domain requires precision by design"
+      ],
+      "languages": [
+        "English (Professional)",
+        "isiZulu (Native)",
+        "isiNdebele (Native)"
+      ]
+    },
+    "certifications": [
+      {
+        "name": "Google Cybersecurity Specialization",
+        "issuer": "Google (Coursera)",
+        "date": "01/2025",
+        "credentialId": "DNAV840ZS7IG"
+      },
+      {
+        "name": "Learning Spring 6 with Spring Boot 3",
+        "issuer": "LinkedIn Learning",
+        "date": "01/2025"
+      },
+      {
+        "name": "Java Exception Handling",
+        "issuer": "LinkedIn Learning",
+        "date": "01/2025"
+      },
+      {
+        "name": "Learning Java Collections",
+        "issuer": "LinkedIn Learning",
+        "date": "01/2025"
+      },
+      {
+        "name": "Learning JDBC",
+        "issuer": "LinkedIn Learning",
+        "date": "01/2025"
+      },
+      {
+        "name": "Sound the Alarm: Detection and Response",
+        "issuer": "Google (Coursera)",
+        "date": "12/2024",
+        "credentialId": "CGW6OHZVMA9B"
+      },
+      {
+        "name": "Assets, Threats, and Vulnerabilities",
+        "issuer": "Google (Coursera)",
+        "date": "12/2024",
+        "credentialId": "AJDRLGIN7SNY"
+      },
+      {
+        "name": "Tools of the Trade: Linux and SQL",
+        "issuer": "Google (Coursera)",
+        "date": "12/2024",
+        "credentialId": "TPBIXML8X0RL"
+      },
+      {
+        "name": "Connect and Protect: Networks and Network Security",
+        "issuer": "Google (Coursera)",
+        "date": "12/2024",
+        "credentialId": "RGCPFZ2OKN3I"
+      },
+      {
+        "name": "Play It Safe: Manage Security Risks",
+        "issuer": "Google (Coursera)",
+        "date": "12/2024",
+        "credentialId": "U2CPP6RZTLJE"
+      },
+      {
+        "name": "Foundations of Cybersecurity",
+        "issuer": "Google (Coursera)",
+        "date": "11/2024",
+        "credentialId": "8RC45ZB04H59"
+      },
+      {
+        "name": "Learning Spring with Spring Boot",
+        "issuer": "LinkedIn Learning",
+        "date": "09/2024"
+      },
+      {
+        "name": "Java Essential Training: Objects and APIs",
+        "issuer": "LinkedIn Learning",
+        "date": "08/2023"
+      },
+      {
+        "name": "Learning the JavaScript Language",
+        "issuer": "LinkedIn Learning",
+        "date": "03/2023"
+      },
+      {
+        "name": "Java Essential Training: Syntax and Structure",
+        "issuer": "LinkedIn Learning",
+        "date": "02/2023"
+      },
+      {
+        "name": "Advanced Bookkeeping Techniques",
+        "issuer": "LinkedIn Learning",
+        "date": "02/2023"
+      },
+      {
+        "name": "The Business of Accounting",
+        "issuer": "LinkedIn Learning",
+        "date": "02/2023"
+      }
+    ],
+    "projects": [
+      {
+        "name": "FIN — Multi-Tenant Financial Management SaaS Platform",
+        "description": "End-to-end SaaS platform purpose-built for SARS compliance in South African small businesses. Automates the full accounting layer — payroll, invoicing, bank reconciliation, VAT, asset depreciation, budgeting, and financial reporting — so business owners produce audit-ready financials without accounting knowledge. Live in production with real paying customers on a PayFast recurring billing integration.",
+        "technologies": [
+          "Java 17",
+          "Spring Boot 3.5",
+          "Spring Security 6.5",
+          "PostgreSQL (AWS RDS)",
+          "Flyway",
+          "Hibernate / JPA",
+          "React 19",
+          "TypeScript 5",
+          "Vite",
+          "Vitest",
+          "Docker",
+          "GitHub Actions",
+          "AWS EC2",
+          "AWS S3",
+          "AWS Secrets Manager",
+          "AWS SSM",
+          "Nginx",
+          "Apache PdfBox",
+          "PayFast API",
+          "CodeQL",
+          "GitGuardian"
+        ],
+        "bullets": [
+          "Designed a 62-table multi-tenant PostgreSQL schema covering GL, payroll, assets, budgeting, sales, banking, VAT, documents, and audit — all with tenant isolation via company_id",
+          "Built a double-entry GL engine that generates balanced journal entries automatically for every financial event (invoices, payroll, bank transactions, asset depreciation, VAT settlements) — the user never constructs a debit or credit",
+          "Delivered the highest-complexity module: 39-endpoint SARS-compliant payroll with PAYE tax bracket evaluation, UIF (1%/1%) and SDL (1%) calculation, PDF payslip generation, SMTP payslip distribution, and automatic GL posting via PayrollPostingService",
+          "Engineered a bank statement import pipeline supporting Absa, FNB, Capitec, and ServiceFee PDF formats using spatial coordinate-based text extraction — enabling reliable parsing across inconsistent column layouts",
+          "Implemented a customer invoicing module that posts AR (DR Trade Debtors / CR Revenue / CR VAT Output) and discount entries (DR Discount Allowed / CR Trade Debtors) automatically, with separate code paths for VAT-registered and non-VAT companies",
+          "Shipped 20 financial reporting services producing SARS-ready Balance Sheet, Income Statement, Cash Flow (direct + indirect method), Trial Balance, Aged Receivables/Payables, and Payroll Analysis — all rendered to PDF via Apache PdfBox",
+          "Set up 11 GitHub Actions workflows covering deploy pipeline (bootJar → S3 → SSM pull → systemd restart → health check), parallel lint/compile, CodeQL SAST, GitGuardian secret scan, Docker image build to GHCR, and Gradle lock file validation",
+          "Applied AOP (PlanEnforcementAspect) to enforce subscription plan feature gating across the entire service layer without a single if-check in business logic",
+          "Implemented JWT authentication with HttpOnly cookies and refresh token rotation, strict CSP, HSTS, rate-limiting interceptor, CORS origin restriction, and zero-credential codebase via AWS Secrets Manager",
+          "Safely evolved a live RDS schema with 18 Flyway migrations — including a full database recreation event where employee data (38+ fields per record) was extracted via SSM-executed SQL, backed to S3, and fully restored without UI import tooling",
+          "Built a fully mobile-responsive React 19 / TypeScript frontend (52 components, strict typing, 5 breakpoints) enabling payroll, invoicing, and financial reporting from a mobile phone on site"
+        ]
+      },
+      {
+        "name": "Spatial Bank Statement Parser",
+        "description": "A coordinate-based PDF text extraction engine that parses South African bank statements from Absa, FNB, Capitec, and a service-fee format — resolving the challenge that these PDFs do not share a consistent column layout across institutions. Feeds parsed transactions into a rules-based classification engine for automatic GL account posting.",
+        "technologies": ["Java 17", "Apache PdfBox", "Spatial coordinate extraction", "Spring Boot"],
+        "bullets": [
+          "Built SpatialDocumentTextExtractor to locate and group text tokens by page coordinates rather than line order — enabling layout-agnostic parsing across 4 distinct bank PDF formats",
+          "Designed a TransactionClassificationEngine that applies company-defined and template rules to suggest GL account postings for each imported transaction, reducing administrator classification effort to review-and-confirm",
+          "Integrated the pipeline into the bank reconciliation module, enabling statement import, classification, and GL posting in a single flow without manual re-entry of transaction data"
+        ]
+      },
+      {
+        "name": "SARS-Compliant Payroll Engine",
+        "description": "The largest single module in FIN — 39 REST endpoints covering the full payroll lifecycle from employee setup through payslip distribution and GL posting. Implements SARS tax bracket evaluation, UIF and SDL contribution rules, IRP5-aligned data structures, PDF payslip generation, and SMTP email distribution.",
+        "technologies": ["Java 17", "Spring Boot", "Spring Security", "Apache PdfBox", "SMTP", "PostgreSQL", "JPA"],
+        "bullets": [
+          "Implemented SARS PAYE tax bracket lookup and marginal rate calculation, UIF (1% employee / 1% employer) and SDL (1% employer) contribution rules — all configurable per tax year",
+          "Generated IRP5-aligned PDF payslips via Apache PdfBox and distributed them directly to employee email addresses via SMTP on payroll run completion",
+          "Designed PayrollPostingService to automatically create balanced GL journal entries for each payroll period — salary expense, PAYE payable, UIF payable, SDL payable, and net pay — eliminating all manual journal construction",
+          "Built payroll period management, employee tax profile, and payroll history endpoints to support full payroll audit trail requirements"
+        ]
+      }
+    ]
+  }
+}

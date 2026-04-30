@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${letter.senderName} + ' — Cover Letter'">Cover Letter</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Calibri', Arial, sans-serif;
+            font-size: 11pt;
+            color: #1a1a1a;
+            background: #ffffff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 48px 56px;
+            line-height: 1.6;
+        }
+
+        .sender-name {
+            font-size: 20pt;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .sender-contact {
+            font-size: 10pt;
+            color: #333;
+            border-bottom: 1.5px solid #1a1a1a;
+            padding-bottom: 10px;
+            margin-bottom: 28px;
+        }
+
+        .date {
+            margin-bottom: 20px;
+            font-size: 11pt;
+        }
+
+        .recipient {
+            margin-bottom: 20px;
+            font-size: 11pt;
+        }
+        .recipient p { margin-bottom: 2px; }
+
+        .salutation {
+            margin-bottom: 16px;
+            font-size: 11pt;
+        }
+
+        .body p {
+            margin-bottom: 14px;
+            font-size: 11pt;
+            text-align: justify;
+        }
+
+        .closing {
+            margin-top: 28px;
+            font-size: 11pt;
+        }
+        .closing .sign-off { margin-bottom: 32px; }
+        .closing .sig-name { font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<p class="sender-name" th:text="${letter.senderName}">Name</p>
+<p class="sender-contact">
+    <span th:text="${letter.senderEmail}"></span>
+    <span th:if="${letter.senderPhone}"> &#160;|&#160;<span th:text="${letter.senderPhone}"></span></span>
+    <span th:if="${letter.senderLocation}"> &#160;|&#160;<span th:text="${letter.senderLocation}"></span></span>
+</p>
+
+<p class="date" th:text="${letter.date}">Date</p>
+
+<div class="recipient">
+    <p th:if="${letter.recipientName}" th:text="${letter.recipientName}"></p>
+    <p th:if="${letter.recipientTitle}" th:text="${letter.recipientTitle}"></p>
+    <p th:if="${letter.companyName}" th:text="${letter.companyName}"></p>
+</div>
+
+<p class="salutation">
+    <span th:if="${letter.recipientName}" th:text="'Dear ' + ${letter.recipientName} + ','">Dear Hiring Manager,</span>
+    <span th:unless="${letter.recipientName}">Dear Hiring Team,</span>
+</p>
+
+<div class="body">
+    <p th:each="para : ${letter.paragraphs}" th:text="${para}"></p>
+</div>
+
+<div class="closing">
+    <p class="sign-off">Sincerely,</p>
+    <p class="sig-name" th:text="${letter.senderName}">Name</p>
+</div>
+
+</body>
+</html>

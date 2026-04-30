@@ -1,0 +1,17 @@
+{
+  "senderName": "Immaculate Nyoni",
+  "senderEmail": "immaculate@sthwalo.com",
+  "senderPhone": "+27 61 514 6185",
+  "senderLocation": "Johannesburg, South Africa",
+  "date": "30 April 2026",
+  "recipientName": "The Engineering Team",
+  "recipientTitle": null,
+  "companyName": "JUMO",
+  "roleTitle": "Junior Software Engineer",
+  "paragraphs": [
+    "I am applying for the Junior Software Engineer position at JUMO. JUMO builds infrastructure that extends financial access to people who have historically been excluded from it. I built FIN — a financial management SaaS platform — for the same reason: small business owners in South Africa are routinely non-compliant with SARS not because they are careless, but because the tools that exist require accounting knowledge they do not have. I understand the problem of financial exclusion at the product level, and I want to work on it at the infrastructure level with a team that is operating at JUMO's scale.",
+    "Over the past two years I designed, built, and shipped FIN to production as a solo engineer: 620 000 lines of code, 331 REST endpoints across 30 Spring Boot controllers, a 62-table multi-tenant PostgreSQL schema, and 11 GitHub Actions CI/CD workflows covering build, test, SAST, secret scanning, and deployment to AWS. The stack is Java 17, Spring Boot 3.5, React 19, TypeScript, Docker, and AWS — which maps directly to what JUMO uses. I have built the payroll engine, the double-entry accounting engine, a spatial PDF parsing pipeline for South African bank statements, live PayFast subscription billing, and a full financial reporting suite. Every part of that system — schema design, service architecture, security, CI/CD, and production operations — I owned end to end.",
+    "I left a formal computer science programme at IU International University due to financial constraints and continued through self-directed study and production delivery. I completed the Google Cybersecurity Specialization and eleven Java and Spring Boot certifications through LinkedIn Learning, all while building FIN. The security knowledge from those certifications fed directly into production decisions: JWT authentication design, strict CSP configuration, rate limiting, and zero-credential infrastructure via AWS Secrets Manager. I am not a candidate who learned theory and is looking for a first project — I am a candidate who built a production system and formalised the theory in parallel.",
+    "JUMO's engineering culture — remote-first, cross-functional, autonomous, learning continuously, building for impact — is the environment I have already been operating in. I am ready to contribute to a distributed system at a scale I have not yet worked at, and I am the kind of engineer who gets there by reading, asking, shipping, and iterating. I would welcome the opportunity to speak with your team."
+  ]
+}
