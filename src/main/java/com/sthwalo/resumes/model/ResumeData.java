@@ -1,5 +1,6 @@
 package com.sthwalo.resumes.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -20,6 +21,7 @@ public class ResumeData {
     /** 2-4 sentence professional summary — improves ATS keyword matching */
     private String summary;
 
+    @JsonAlias({"workExperience"})
     @Valid
     private List<WorkExperience> experience;
 

@@ -135,7 +135,7 @@ function collectResumeData() {
       website:   val('pi-website')
     },
     summary: val('pi-summary'),
-    workExperience: collectEntries('exp-list', readExperience),
+    experience: collectEntries('exp-list', readExperience),
     education:      collectEntries('edu-list',  readEducation),
     skills: {
       technical: getTagValues('tag-technical'),
@@ -224,7 +224,7 @@ function populateForm(draft) {
   // Experience
   const expList = document.getElementById('exp-list');
   expList.innerHTML = '';
-  (d.workExperience ?? []).forEach(e => {
+  (d.experience ?? []).forEach(e => {
     expList.appendChild(buildExperienceCard(e));
   });
   if (!expList.children.length) addExperience();

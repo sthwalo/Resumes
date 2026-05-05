@@ -111,11 +111,11 @@
 <!-- ── Contact (body element — NOT header/footer tag) ────────────────── -->
 <p class="contact">
     <span th:text="${resume.personalInfo.email}">email@example.com</span>
-    <span th:if="${resume.personalInfo.phone}"> &#160;|&#160; <span th:text="${resume.personalInfo.phone}"></span></span>
-    <span th:if="${resume.personalInfo.location}"> &#160;|&#160; <span th:text="${resume.personalInfo.location}"></span></span>
-    <span th:if="${resume.personalInfo.linkedIn}"> &#160;|&#160; linkedin.com/in/<span th:text="${resume.personalInfo.linkedIn}"></span></span>
-    <span th:if="${resume.personalInfo.github}"> &#160;|&#160; github.com/<span th:text="${resume.personalInfo.github}"></span></span>
-    <span th:if="${resume.personalInfo.website}"> &#160;|&#160; <span th:text="${resume.personalInfo.website}"></span></span>
+    <span th:if="${!#strings.isEmpty(resume.personalInfo.phone)}"> &#160;|&#160; <span th:text="${resume.personalInfo.phone}"></span></span>
+    <span th:if="${!#strings.isEmpty(resume.personalInfo.location)}"> &#160;|&#160; <span th:text="${resume.personalInfo.location}"></span></span>
+    <span th:if="${!#strings.isEmpty(resume.personalInfo.linkedIn)}"> &#160;|&#160; linkedin.com/<span th:text="${resume.personalInfo.linkedIn}"></span></span>
+    <span th:if="${!#strings.isEmpty(resume.personalInfo.github)}"> &#160;|&#160; github.com/<span th:text="${resume.personalInfo.github}"></span></span>
+    <span th:if="${!#strings.isEmpty(resume.personalInfo.website)}"> &#160;|&#160; <span th:text="${resume.personalInfo.website}"></span></span>
 </p>
 
 <!-- ── Professional Summary ──────────────────────────────────────────── -->
@@ -132,7 +132,7 @@
             <span th:text="${exp.jobTitle}"></span>
             &#160;&#8212;&#160;
             <span th:text="${exp.company}"></span>
-            <span th:if="${exp.location}">, <span th:text="${exp.location}"></span></span>
+            <span th:if="${!#strings.isEmpty(exp.location)}">, <span th:text="${exp.location}"></span></span>
         </p>
         <p class="job-meta">
             <span th:text="${exp.startDate}"></span> &#8211;
@@ -187,8 +187,8 @@
     <div class="cert" th:each="cert : ${resume.certifications}">
         <strong th:text="${cert.name}"></strong>
         &#160;&#8212;&#160; <span th:text="${cert.issuer}"></span>
-        <span th:if="${cert.date}"> (<span th:text="${cert.date}"></span>)</span>
-        <span th:if="${cert.expiryDate}"> &#8211; Expires: <span th:text="${cert.expiryDate}"></span></span>
+        <span th:if="${!#strings.isEmpty(cert.date)}"> (<span th:text="${cert.date}"></span>)</span>
+        <span th:if="${!#strings.isEmpty(cert.expiryDate)}"> &#8211; Expires: <span th:text="${cert.expiryDate}"></span></span>
     </div>
 </div>
 
@@ -197,12 +197,12 @@
     <h2 class="section-title">Projects</h2>
     <div class="project" th:each="proj : ${resume.projects}">
         <p class="project-name" th:text="${proj.name}"></p>
-        <p th:if="${proj.description}" th:text="${proj.description}"></p>
+        <p th:if="${!#strings.isEmpty(proj.description)}" th:text="${proj.description}"></p>
         <p class="project-stack"
            th:if="${proj.technologies != null and !proj.technologies.empty}">
             Stack: <span th:text="${#strings.listJoin(proj.technologies, ', ')}"></span>
         </p>
-        <p th:if="${proj.url}">
+        <p th:if="${!#strings.isEmpty(proj.url)}">
             URL: <span th:text="${proj.url}"></span>
         </p>
         <ul class="bullets" th:if="${proj.bullets != null and !proj.bullets.empty}">

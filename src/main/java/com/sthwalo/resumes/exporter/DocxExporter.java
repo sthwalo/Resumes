@@ -46,10 +46,11 @@ public class DocxExporter implements ResumeExporter {
             // ── Contact line ─────────────────────────────────────────────────
             StringBuilder contact = new StringBuilder();
             contact.append(info.getEmail());
-            if (info.getPhone() != null) contact.append("  |  ").append(info.getPhone());
-            if (info.getLocation() != null) contact.append("  |  ").append(info.getLocation());
-            if (info.getLinkedIn() != null) contact.append("  |  linkedin.com/in/").append(info.getLinkedIn());
-            if (info.getGithub() != null) contact.append("  |  github.com/").append(info.getGithub());
+            if (hasText(info.getPhone())) contact.append("  |  ").append(info.getPhone());
+            if (hasText(info.getLocation())) contact.append("  |  ").append(info.getLocation());
+            if (hasText(info.getLinkedIn())) contact.append("  |  linkedin.com/").append(info.getLinkedIn());
+            if (hasText(info.getGithub())) contact.append("  |  github.com/").append(info.getGithub());
+            if (hasText(info.getWebsite())) contact.append("  |  ").append(info.getWebsite());
             addParagraph(doc, contact.toString(), false, 9);
 
             // ── Summary ───────────────────────────────────────────────────────
@@ -64,7 +65,12 @@ public class DocxExporter implements ResumeExporter {
                 for (WorkExperience exp : data.getExperience()) {
                     addParagraph(doc, exp.getJobTitle() + "  —  " + exp.getCompany()
                             + (exp.getLocation() != null ? ", " + exp.getLocation() : ""), true, 11);
-                    String dates = exp.getStartDate() + " – " + (exp.isCurrent() ? "Present" : exp.getEndDate());
+                    String dates = exp.getStartDate();
+                    if (exp.isCurrent()) {
+                        dates += " – Present";
+                    } else if (hasText(exp.getEndDate())) {
+                        dates += " – " + exp.getEndDate();
+                    }
                     addParagraph(doc, dates, false, 10);
                     if (exp.getBullets() != null) {
                         for (String bullet : exp.getBullets()) {
@@ -98,8 +104,13 @@ public class DocxExporter implements ResumeExporter {
             if (data.getCertifications() != null && !data.getCertifications().isEmpty()) {
                 addHeading(doc, "Certifications", 2);
                 for (Certification cert : data.getCertifications()) {
-                    String line = cert.getName() + "  —  " + cert.getIssuer()
-                            + (cert.getDate() != null ? "  (" + cert.getDate() + ")" : "");
+                    String line = cert.getName() + "  —  " + cert.getIssuer();
+                    if (hasText(cert.getDate())) {
+                        line += "  (" + cert.getDate() + ")";
+                    }
+                    if (hasText(cert.getExpiryDate())) {
+                        line += "  —  Expires: " + cert.getExpiryDate();
+                    }
                     addBullet(doc, line, 11);
                 }
             }
@@ -109,9 +120,12 @@ public class DocxExporter implements ResumeExporter {
                 addHeading(doc, "Projects", 2);
                 for (Project proj : data.getProjects()) {
                     addParagraph(doc, proj.getName(), true, 11);
-                    if (proj.getDescription() != null) addParagraph(doc, proj.getDescription(), false, 10);
+                    if (hasText(proj.getDescription())) addParagraph(doc, proj.getDescription(), false, 10);
                     if (proj.getTechnologies() != null && !proj.getTechnologies().isEmpty()) {
                         addParagraph(doc, "Stack: " + String.join(", ", proj.getTechnologies()), false, 10);
+                    }
+                    if (hasText(proj.getUrl())) {
+                        addParagraph(doc, "URL: " + proj.getUrl(), false, 10);
                     }
                 }
             }
@@ -164,6 +178,10 @@ public class DocxExporter implements ResumeExporter {
         valueRun.setText(String.join(", ", items));
         valueRun.setFontFamily("Calibri");
         valueRun.setFontSize(11);
+    }
+
+    private boolean hasText(String text) {
+        return text != null && !text.isBlank();
     }
 
     private BigInteger getOrCreateBulletNumId(XWPFDocument doc) {
