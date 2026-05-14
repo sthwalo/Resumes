@@ -113,7 +113,7 @@
     <span th:text="${resume.personalInfo.email}">email@example.com</span>
     <span th:if="${!#strings.isEmpty(resume.personalInfo.phone)}"> &#160;|&#160; <span th:text="${resume.personalInfo.phone}"></span></span>
     <span th:if="${!#strings.isEmpty(resume.personalInfo.location)}"> &#160;|&#160; <span th:text="${resume.personalInfo.location}"></span></span>
-    <span th:if="${!#strings.isEmpty(resume.personalInfo.linkedIn)}"> &#160;|&#160; linkedin.com/<span th:text="${resume.personalInfo.linkedIn}"></span></span>
+    <span th:if="${!#strings.isEmpty(resume.personalInfo.linkedIn)}"> &#160;|&#160; linkedin.com/in/<span th:text="${resume.personalInfo.linkedIn}"></span></span>
     <span th:if="${!#strings.isEmpty(resume.personalInfo.github)}"> &#160;|&#160; github.com/<span th:text="${resume.personalInfo.github}"></span></span>
     <span th:if="${!#strings.isEmpty(resume.personalInfo.website)}"> &#160;|&#160; <span th:text="${resume.personalInfo.website}"></span></span>
 </p>
@@ -152,10 +152,10 @@
         <p class="edu-degree" th:text="${edu.degree}"></p>
         <p class="edu-meta">
             <span th:text="${edu.institution}"></span>
-            <span th:if="${edu.location}">, <span th:text="${edu.location}"></span></span>
-            <span th:if="${edu.graduationDate}"> &#160;|&#160; Graduated: <span th:text="${edu.graduationDate}"></span></span>
-            <span th:if="${edu.gpa}"> &#160;|&#160; GPA: <span th:text="${edu.gpa}"></span></span>
-            <span th:if="${edu.honors}"> &#160;|&#160; <span th:text="${edu.honors}"></span></span>
+            <span th:if="${!#strings.isEmpty(edu.location)}">, <span th:text="${edu.location}"></span></span>
+            <span th:if="${!#strings.isEmpty(edu.graduationDate)}"> &#160;|&#160; Graduated: <span th:text="${edu.graduationDate}"></span></span>
+            <span th:if="${!#strings.isEmpty(edu.gpa)}"> &#160;|&#160; GPA: <span th:text="${edu.gpa}"></span></span>
+            <span th:if="${!#strings.isEmpty(edu.honors)}"> &#160;|&#160; <span th:text="${edu.honors}"></span></span>
         </p>
     </div>
 </div>

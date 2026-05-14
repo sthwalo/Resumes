@@ -84,10 +84,13 @@ public class DocxExporter implements ResumeExporter {
             if (data.getEducation() != null && !data.getEducation().isEmpty()) {
                 addHeading(doc, "Education", 2);
                 for (Education edu : data.getEducation()) {
-                    addParagraph(doc, edu.getDegree() + "  —  " + edu.getInstitution(), true, 11);
-                    String details = edu.getGraduationDate() != null ? "Graduated: " + edu.getGraduationDate() : "";
-                    if (edu.getGpa() != null) details += "  |  GPA: " + edu.getGpa();
+                    String eduHeader = edu.getDegree() + "  —  " + edu.getInstitution();
+                    if (hasText(edu.getLocation())) eduHeader += ", " + edu.getLocation();
+                    addParagraph(doc, eduHeader, true, 11);
+                    String details = hasText(edu.getGraduationDate()) ? "Graduated: " + edu.getGraduationDate() : "";
+                    if (hasText(edu.getGpa())) details += (details.isBlank() ? "" : "  |  ") + "GPA: " + edu.getGpa();
                     if (!details.isBlank()) addParagraph(doc, details.trim(), false, 10);
+                    if (hasText(edu.getHonors())) addParagraph(doc, edu.getHonors(), false, 10);
                 }
             }
 
