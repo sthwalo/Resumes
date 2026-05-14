@@ -43,6 +43,11 @@ public class DocxExporter implements ResumeExporter {
             // ── Name (Heading 1 style, 18pt) ────────────────────────────────
             addHeading(doc, info.getFullName(), 1);
 
+            // ── Title / tagline ──────────────────────────────────────────────
+            if (hasText(info.getTitle())) {
+                addParagraph(doc, info.getTitle(), false, 11);
+            }
+
             // ── Contact line ─────────────────────────────────────────────────
             StringBuilder contact = new StringBuilder();
             contact.append(info.getEmail());

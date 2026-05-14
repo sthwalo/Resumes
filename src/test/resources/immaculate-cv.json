@@ -3,6 +3,7 @@
   "data": {
     "personalInfo": {
       "fullName": "Immaculate Nyoni",
+      "title": "Java Backend Engineer (Spring Boot) | Systems Architecture | Multi-Tenant FinTech SaaS | AWS",
       "email": "immaculate@sthwalo.com",
       "phone": "+27 061 514 6185",
       "location": "Johannesburg, South Africa (Remote-Ready, UTC+2)",
@@ -13,7 +14,7 @@
     "summary": "Self-taught full-stack engineer who left a formal CS programme due to financial constraints and spent the next two years building a production multi-tenant SaaS platform (620 000+ lines of code, 331 REST endpoints) using Java 17, Spring Boot 3.5, React 19, TypeScript, and AWS — while formalising knowledge in security, networking, and Java through Google and LinkedIn certifications in parallel. Comfortable across the full SDLC: schema design, distributed service architecture, CI/CD, and live AWS operations. Ready to bring that end-to-end delivery depth to a collaborative engineering team building scalable, impactful systems.",
     "experience": [
       {
-        "jobTitle": "Owner, Architect & Lead Engineer",
+        "jobTitle": "Java Backend Engineer (Spring Boot) | Systems Architecture | Multi-Tenant FinTech SaaS | AWS",
         "company": "FIN Financial Management System — Sthwalo Holdings (Pty) Ltd",
         "location": "South Africa (Remote)",
         "startDate": "04/2024",

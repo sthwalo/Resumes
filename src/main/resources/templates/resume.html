@@ -33,7 +33,15 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             color: #1a1a1a;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
+        }
+        p.title {
+            font-size: 11pt;
+            font-weight: 400;
+            color: #444;
+            letter-spacing: 0.3px;
+            margin-top: 0;
+            margin-bottom: 6px;
         }
 
         /* ── Contact bar ──────────────────────────────── */
@@ -107,6 +115,7 @@
 
 <!-- ── Name ──────────────────────────────────────────────────────────── -->
 <h1 class="name" th:text="${resume.personalInfo.fullName}">Full Name</h1>
+<p class="title" th:if="${!#strings.isEmpty(resume.personalInfo.title)}" th:text="${resume.personalInfo.title}"></p>
 
 <!-- ── Contact (body element — NOT header/footer tag) ────────────────── -->
 <p class="contact">

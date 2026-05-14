@@ -10,6 +10,9 @@ public class PersonalInfo {
     @NotBlank(message = "Full name is required")
     private String fullName;
 
+    /** Professional title / tagline shown under the name — e.g. "Java Backend Engineer | AWS" */
+    private String title;
+
     @NotBlank(message = "Email is required")
     @Email(message = "Email must be a valid address")
     private String email;
